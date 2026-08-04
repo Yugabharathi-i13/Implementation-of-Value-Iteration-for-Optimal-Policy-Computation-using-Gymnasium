@@ -31,19 +31,17 @@ Google Colab / Jupyter Notebook
 
 ## Environment Description
 ```
-
-FrozenLake-v1 is a grid-world environment provided by Gymnasium. The agent starts from the Start (S) state and aims to reach the Goal (G)
-while avoiding Holes (H). The surface is slippery, making movements stochastic. The environment consists of four possible actions:
-
-
-Left (0)
-Down (1)
-Right (2)
-Up (3)
-
-
-A reward of 1 is received upon reaching the goal, while all other transitions receive a reward of 0.
+env_desc = [
+    "SFFG",
+    "FHFH",
+    "FFFH",
+    "HFFF"
+]
 ```
+
+The environment is a custom 4×4 FrozenLake grid in which the goal state is placed at the top-right corner instead of the default bottom-right position. The agent begins at the Start (S) state and must safely navigate through frozen cells (F) while avoiding holes (H). Since the environment is slippery, each action has stochastic outcomes. The Value Iteration algorithm computes the optimal state-value function and policy to efficiently reach the relocated goal while maximizing the expected cumulative reward.
+
+
 
 ## MDP Representation
 ```
@@ -200,9 +198,9 @@ The Value Iteration algorithm was successfully implemented on the FrozenLake-v1 
 
 ## Inference
 ```
-1.Value Iteration successfully converged to the optimal value function by repeatedly applying the Bellman Optimality
-  Equation until convergence.
-2.The derived optimal policy enables the agent to select the best action in each state, maximizing the probability of reaching
-  the goal with the highest expected reward.
+1.The Value Iteration algorithm successfully adapted to the custom FrozenLake environment and converged to
+  the optimal state-value function despite the modified goal location.
+2.The computed optimal policy guided the agent through the safest path to the new goal while avoiding hole
+  states and maximizing the expected cumulative reward.
 
 ```
